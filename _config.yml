@@ -1,0 +1,56 @@
+# ===== サイトの基本設定 =====
+# ここを書き換えると、サイト全体に反映されます。
+
+title: はじめての資産運用ノート
+tagline: 新NISA・証券口座選びを、投資初心者にやさしく解説
+description: >-
+  新NISAやiDeCo、証券口座の選び方・開け方など、これから投資を始める人が
+  つまずきやすいポイントを、公的機関の情報をもとにわかりやすくまとめた初心者向けガイドです。
+lang: ja_JP
+
+# 公開URL（Cloudflare Pages で公開）
+# Cloudflare で決まった URL（例: https://shisan-note.pages.dev）や、
+# 独自ドメインを取得したらそのURLに書き換えてください。最後に「/」は付けません。
+url: "https://shisan-note.pages.dev"
+baseurl: ""
+
+# 運営者情報（運営者情報ページ・フッターに表示）
+author:
+  name: ノート管理人
+
+# お問い合わせ先（どちらか一方は必ず設定してください）
+# Googleフォームなどで問い合わせフォームを作り、そのURLを入れるのがおすすめです。
+contact_form_url: ""
+contact_email: ""
+
+timezone: Asia/Tokyo
+permalink: /:title/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+    values:
+      layout: page
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .claude

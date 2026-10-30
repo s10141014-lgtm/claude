@@ -1,0 +1,23 @@
+---
+layout: default
+title: 記事一覧
+permalink: /articles/
+description: はじめての資産運用ノートの記事一覧です。新NISA、iDeCo、証券口座の選び方などをカテゴリ別にまとめています。
+---
+<div class="wrap">
+  <h1 class="page-title" style="margin-bottom:24px">記事一覧</h1>
+  {% assign groups = site.posts | group_by: "category" %}
+  {% for g in groups %}
+  <section class="section">
+    <h2 class="section-title">{{ g.name }}</h2>
+    <ul class="card-list">
+      {% for p in g.items %}
+      <li><a class="card" href="{{ p.url | relative_url }}">
+        <span class="card-title">{{ p.title }}</span>
+        <span class="card-desc">{{ p.description }}</span>
+      </a></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+</div>

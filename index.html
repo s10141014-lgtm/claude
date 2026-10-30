@@ -1,0 +1,45 @@
+---
+layout: home
+title: 投資初心者のための新NISA・証券口座ガイド
+---
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="nb">投資の「はじめの一歩」を、</span><span class="nb">いちばんやさしく。</span></h1>
+    <p>新NISAのしくみ、証券口座の選び方・開き方、つみたて投資の考え方まで。これから資産運用を始める人がつまずきやすいポイントを、公的機関の情報をもとに順番にまとめています。</p>
+    <div class="hero-actions">
+      <a class="btn btn-light" href="{{ '/shin-nisa-basics/' | relative_url }}">まずは新NISAを知る</a>
+      <a class="btn btn-ghost" href="{{ '/simulator/' | relative_url }}">積立シミュレーター</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">はじめての人は、この順番で読むのがおすすめ</h2>
+    <ol class="steps">
+      <li><a href="{{ '/shin-nisa-basics/' | relative_url }}"><span class="card-title">新NISAのしくみを知る</span><span class="card-desc">利益に税金がかからない制度。まずは全体像をつかみましょう。</span></a></li>
+      <li><a href="{{ '/how-to-choose-broker/' | relative_url }}"><span class="card-title">証券口座を選ぶ</span><span class="card-desc">NISA口座は1人1つ。手数料や使いやすさで比べます。</span></a></li>
+      <li><a href="{{ '/open-account-steps/' | relative_url }}"><span class="card-title">口座を開設する</span><span class="card-desc">スマホとマイナンバーカードがあれば手続きはスムーズ。</span></a></li>
+      <li><a href="{{ '/index-investing/' | relative_url }}"><span class="card-title">つみたてを始める</span><span class="card-desc">初心者向けのインデックス投資の考え方を解説します。</span></a></li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <div class="tool-banner">
+      <p><strong>毎月いくら積み立てると、将来いくらになる？</strong>金額・利回り・期間を入れるだけで、その場で試算できます。</p>
+      <a class="btn btn-brand" href="{{ '/simulator/' | relative_url }}">シミュレーターを使う</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">新着記事</h2>
+    <ul class="card-list">
+      {% for p in site.posts limit: 6 %}
+      <li><a class="card" href="{{ p.url | relative_url }}">
+        <span class="tag">{{ p.category }}</span>
+        <span class="card-title">{{ p.title }}</span>
+        <span class="card-desc">{{ p.description }}</span>
+      </a></li>
+      {% endfor %}
+    </ul>
+    <p style="text-align:right;margin-top:12px"><a href="{{ '/articles/' | relative_url }}">記事一覧を見る →</a></p>
+  </section>
+</div>

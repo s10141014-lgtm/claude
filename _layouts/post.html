@@ -1,0 +1,52 @@
+---
+layout: default
+---
+<article class="wrap narrow post">
+  <nav class="breadcrumb" aria-label="パンくずリスト">
+    <a href="{{ '/' | relative_url }}">ホーム</a><span aria-hidden="true">›</span>
+    <a href="{{ '/articles/' | relative_url }}">記事一覧</a><span aria-hidden="true">›</span>
+    <span>{{ page.category | default: page.categories.first }}</span>
+  </nav>
+  <header class="post-header">
+    {% assign cat = page.category | default: page.categories.first %}
+    {% if cat %}<span class="tag">{{ cat }}</span>{% endif %}
+    <h1>{{ page.title }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">公開日：{{ page.date | date: '%Y年%-m月%-d日' }}</time>
+      {% if page.last_modified_at %}<time datetime="{{ page.last_modified_at | date_to_xmlschema }}">更新日：{{ page.last_modified_at | date: '%Y年%-m月%-d日' }}</time>{% endif %}
+    </p>
+  </header>
+  <p class="pr-notice">本記事はプロモーション（広告）を含みます。</p>
+  {% if page.summary %}
+  <div class="summary-box">
+    <p class="summary-title">この記事でわかること</p>
+    <ul>{% for s in page.summary %}<li>{{ s }}</li>{% endfor %}</ul>
+  </div>
+  {% endif %}
+  <nav class="toc" aria-label="目次" hidden>
+    <p class="toc-title">目次</p>
+    <ol></ol>
+  </nav>
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  {% if page.sources %}
+  <section class="sources">
+    <h2>参考にした公的情報・公式情報</h2>
+    <ul>
+      {% for s in page.sources %}<li><a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.title }}</a></li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% assign related = site.posts | where_exp: "p", "p.url != page.url" %}
+  <section class="related">
+    <h2>あわせて読みたい</h2>
+    <ul class="card-list compact">
+      {% for p in related limit: 4 %}
+      <li><a class="card" href="{{ p.url | relative_url }}"><span class="tag">{{ p.category }}</span><span class="card-title">{{ p.title }}</span></a></li>
+      {% endfor %}
+    </ul>
+  </section>
+</article>

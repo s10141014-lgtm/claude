@@ -1,0 +1,16 @@
+{%- comment -%}
+  証券会社の紹介カード。使い方：{% include broker-card.html id="sbi" %}
+{%- endcomment -%}
+{%- assign b = site.data.brokers | where: "id", include.id | first -%}
+{%- if b -%}
+<div class="broker-card">
+  <p class="broker-name">{{ b.name }}</p>
+  <p class="broker-catch">{{ b.catch }}</p>
+  <ul class="broker-points">
+    {%- for f in b.points %}
+    <li>{{ f }}</li>
+    {%- endfor %}
+  </ul>
+  {% include cta.html id=b.id banner=true %}
+</div>
+{%- endif -%}

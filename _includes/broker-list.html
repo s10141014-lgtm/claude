@@ -1,0 +1,8 @@
+{%- comment -%}
+  _data/brokers.yml の証券会社をすべてカードで並べます。使い方：{% include broker-list.html %}
+{%- endcomment -%}
+<div class="broker-list">
+{%- for b in site.data.brokers %}
+{% include broker-card.html id=b.id %}
+{%- endfor %}
+</div>

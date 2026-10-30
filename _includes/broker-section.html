@@ -1,0 +1,6 @@
+{%- comment -%}
+  見出し＋注意書き＋証券会社カード一覧。使い方：{% include broker-section.html title="見出し" %}
+{%- endcomment -%}
+<h2>{{ include.title | default: "主なネット証券" }}</h2>
+<p class="note">※ 2026年10月時点で各社の公式サイトに掲載されている情報をもとにまとめています。手数料やポイントのルールは変更されることがあり、条件もあるため、申し込み前に必ず公式サイトで最新情報をご確認ください。掲載順はおすすめ順ではありません。</p>
+{% include broker-list.html %}

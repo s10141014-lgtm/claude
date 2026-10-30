@@ -1,0 +1,21 @@
+{%- comment -%}
+  広告ボタン。使い方：{% include cta.html id="sbi" %}
+  _data/brokers.yml に A8 のリンクコード（a8_text）が入っていればそれを表示し、
+  空なら公式サイトへの通常リンクを表示します。
+{%- endcomment -%}
+{%- assign b = site.data.brokers | where: "id", include.id | first -%}
+{%- if b -%}
+{%- assign label = include.label | default: "" -%}
+{%- if label == "" -%}{%- assign label = b.name | append: "の公式サイトを見る" -%}{%- endif -%}
+<div class="cta">
+  {%- if b.a8_text and b.a8_text != "" %}
+  <span class="ad-label">PR</span>
+  {{ b.a8_text }}
+  {%- else %}
+  <a href="{{ b.official_url }}" target="_blank" rel="noopener">{{ label }}</a>
+  {%- endif %}
+  {%- if b.a8_banner and b.a8_banner != "" and include.banner %}
+  <div class="cta-banner">{{ b.a8_banner }}</div>
+  {%- endif %}
+</div>
+{%- endif -%}

@@ -1,0 +1,49 @@
+---
+layout: page
+title: 積立シミュレーター
+permalink: /simulator/
+description: 毎月の積立額・想定利回り・期間を入れるだけで、将来の資産額の目安を計算できる無料の積立シミュレーターです。
+---
+<p>毎月の積立額・想定利回り（年率）・積立期間を入力すると、将来の評価額の目安をその場で計算します。入力するたびに結果が自動で変わります。</p>
+
+<form id="sim-form" class="sim-form" novalidate>
+  <label>毎月の積立額
+    <span class="input-row"><input id="sim-monthly" type="number" inputmode="decimal" min="0" max="1000" step="0.1" value="3"><span class="unit">万円</span></span>
+  </label>
+  <label>想定利回り（年率）
+    <span class="input-row"><input id="sim-rate" type="number" inputmode="decimal" min="0" max="15" step="0.1" value="4"><span class="unit">%</span></span>
+    <span class="hint">0〜15%で入力</span>
+  </label>
+  <label>積立期間
+    <span class="input-row"><input id="sim-years" type="number" inputmode="numeric" min="1" max="50" step="1" value="20"><span class="unit">年</span></span>
+  </label>
+  <label>最初にまとめて入れる額
+    <span class="input-row"><input id="sim-initial" type="number" inputmode="decimal" min="0" step="1" value="0"><span class="unit">万円</span></span>
+    <span class="hint">なければ0のまま</span>
+  </label>
+</form>
+
+<div class="sim-results" aria-live="polite">
+  <div class="stat main"><span class="stat-label">最終的な評価額（目安）</span><span class="stat-value" id="res-total">-</span></div>
+  <div class="stat"><span class="stat-label">積み立てた元本</span><span class="stat-value" id="res-principal">-</span></div>
+  <div class="stat"><span class="stat-label">運用で増えた額</span><span class="stat-value" id="res-gain">-</span></div>
+</div>
+<div class="sim-bar" aria-hidden="true"><span class="principal" id="bar-principal"></span><span class="gain" id="bar-gain"></span></div>
+<div class="sim-legend"><span><i style="background:#94a3b8"></i>元本</span><span><i style="background:var(--brand)"></i>運用で増えた額</span></div>
+
+<h2>年ごとの推移</h2>
+<table class="sim-table">
+  <thead><tr><th>経過</th><th>元本</th><th>運用益</th><th>評価額</th></tr></thead>
+  <tbody id="sim-rows"></tbody>
+</table>
+
+<div class="box caution">
+  <p class="box-title">ご注意ください</p>
+  <p>このシミュレーションは、毎月同じ額を積み立て、毎年一定の利回りで運用できたと仮定した計算（月ごとの複利）です。実際の投資では値動きがあり、元本を下回ることもあります。税金や手数料も考慮していません。将来の運用成果を約束するものではありません。</p>
+</div>
+
+<h2>シミュレーション結果の見方</h2>
+<p>積立投資では、長く続けるほど「運用で増えた額」の割合が大きくなりやすいのが特徴です。これは、増えた分がさらに運用されて増える「複利」の効果によるものです。一方で、利回りは毎年一定ではなく、大きく下がる年もあります。利回りを高めに設定しすぎず、2〜4%程度の控えめな数字でも試してみるのがおすすめです。</p>
+<p>新NISAを使えば、こうした運用で得た利益に税金がかかりません。制度のしくみは「<a href="{{ '/shin-nisa-basics/' | relative_url }}">新NISAとは？</a>」で、投資の考え方は「<a href="{{ '/index-investing/' | relative_url }}">インデックス投資とは？</a>」で詳しく解説しています。</p>
+
+<script src="{{ '/assets/js/simulator.js' | relative_url }}" defer></script>
